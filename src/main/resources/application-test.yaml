@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test
+    username: admin
+    password:
+  h2:
+    console:
+      enabled: true
+
+local:
+  server:
+    port: 8080
+
+server:
+  port: 8080
