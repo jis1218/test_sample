@@ -6,4 +6,6 @@ CREATE TABLE member (
     password varchar(20)
 );
 
+INSERT INTO member(email, password) VALUES ('hello@world.com', '23456');
+
 
