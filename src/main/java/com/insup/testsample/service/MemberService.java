@@ -1,8 +1,8 @@
 package com.insup.testsample.service;
 
-import com.insup.testsample.domain.Member;
 import com.insup.testsample.dto.MemberJoinRequest;
-import com.insup.testsample.dto.MemberJoinResponse;
+import com.insup.testsample.dto.MemberLoginRequest;
+import com.insup.testsample.dto.MemberLoginResponse;
 import com.insup.testsample.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,10 +15,14 @@ public class MemberService {
     private final MemberMapper memberRepository;
 
     @Transactional
-    public MemberJoinResponse join(MemberJoinRequest memberJoinRequest) {
+    public void join(MemberJoinRequest memberJoinRequest) {
+        memberRepository.join(memberJoinRequest);
+    }
 
-        Member member = memberRepository.join(memberJoinRequest);
+    @Transactional
+    public MemberLoginResponse login(MemberLoginRequest memberLoginRequest) {
+        int count = memberRepository.login(memberLoginRequest);
 
-        return MemberJoinResponse.of(member);
+        return new MemberLoginResponse(count);
     }
 }

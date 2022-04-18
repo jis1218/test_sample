@@ -1,11 +1,10 @@
 package com.insup.testsample.controller;
 
-import com.insup.testsample.dto.HttpResponse;
 import com.insup.testsample.dto.MemberJoinRequest;
-import com.insup.testsample.dto.MemberJoinResponse;
+import com.insup.testsample.dto.MemberLoginRequest;
+import com.insup.testsample.dto.MemberLoginResponse;
 import com.insup.testsample.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +20,14 @@ public class MemberController {
 
     @PostMapping("/join")
     public ResponseEntity join(@RequestBody MemberJoinRequest memberJoinRequest) {
-        MemberJoinResponse memberJoinResponse = memberService.join(memberJoinRequest);
+        memberService.join(memberJoinRequest);
 
-        return ResponseEntity.ok(memberJoinResponse);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody MemberLoginRequest memberLoginRequest) {
+        MemberLoginResponse memberLoginResponse = memberService.login(memberLoginRequest);
+        return ResponseEntity.ok(memberLoginResponse);
     }
 }

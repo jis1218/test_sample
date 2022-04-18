@@ -1,6 +1,9 @@
-CREATE TABLE MEMBER (
-    id bigint not null auto_increment,
-    email varchar(20)
-)
+DROP TABLE IF EXISTS member;
+
+CREATE TABLE member (
+    id int auto_increment primary key,
+    email varchar(30),
+    password varchar(20)
+);
 
 
